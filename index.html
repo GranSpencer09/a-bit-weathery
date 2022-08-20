@@ -29,121 +29,37 @@
     </header>
     <div class="container">
       <div class="row">
-        <div class="col-md-2">
+        <div class="col-lg-2 text-center">
           <!-- Search text box and button -->
           <div class="row">
             <h2>Search for a City:</h2>
             <div class="ui-widget" id="search">
-              <label for="tags"></label>
-              <input id="tags search" />
+              <input id="tags-search" />
             </div>
 
-            <input
-              type="checkbox"
-              class="btn-check"
-              id="btn-check"
-              autocomplete="off"
-            />
-            <label class="btn btn-primary mt-2" for="btn-check">Search</label>
+            <button class="btn btn-primary mt-2" id="searchBtn">Search</button>
             <hr
               class="border rounded border-primary border-3 opacity-50 mt-4"
             />
             <!-- City options buttons -->
-            <button type="button" class="btn btn-secondary mt-md-2">
-              Secondary
-            </button>
-            <button type="button" class="btn btn-secondary mt-md-2">
-              Secondary</button
-            ><button type="button" class="btn btn-secondary mt-md-2">
-              Secondary</button
-            ><button type="button" class="btn btn-secondary mt-md-2">
-              Secondary</button
-            ><button type="button" class="btn btn-secondary mt-md-2">
-              Secondary</button
-            ><button type="button" class="btn btn-secondary mt-md-2">
-              Secondary
-            </button>
+            <div id="cityButtons" class="height: 200px"></div>
           </div>
         </div>
         <!-- Current city overview -->
         <div class="col ms-3">
-          <div class="border border-3 col-md-12" id="cityCurrent">
-            <h2>San Francisco (8/16/22) </h2>
+          <div class="border border-3 col-md-12">
+            <h2 id="cityCurrent"></h2>
+            <h2 id="CurrentDateSymbol"></h2>
           </div>
           <!-- Current data -->
           <ul class="border border-3" id="currentTWHUV">
-            <dd>Temp:</dd>
-            <dd>Wind:</dd>
-            <dd>Humidity:</dd>
-            <dd>UV Index:</dd>
+            <dd>Temp: <span id="currentTemp"></span>°</dd>
+            <dd>Wind: <span id="currentWind"></span> mph</dd>
+            <dd>Humidity: <span id="currentHum"></span> %</dd>
+            <dd>UV Index: <span id="currentUV"></span></dd>
           </ul>
           <div class="row my-3 ms-3"><h5>5-Day Forecast:</h5></div>
           <div class="row justify-content-between" id="city5Fc">
-            <!-- First forecast box -->
-            <div class="col-md-2 card border-light" style="max-width: 18rem">
-              <div class="card-body">
-                <h5 class="card-title">Light card title</h5>
-                <p class="card-text">
-                  <ul id="cityfc ps-0">
-                    <dd>Temp:</dd>
-                    <dd>Wind:</dd>
-                    <dd>Humidity:</dd>
-                  </ul>
-                </p>
-              </div>
-            </div>
-            <!-- Second forecast box -->
-            <div class="col-md-2 card border-light" style="max-width: 18rem">
-              <div class="card-body">
-                <h5 class="card-title">Light card title</h5>
-                <p class="card-text">
-                  <ul id="cityfc fc2">
-                    <dd>Temp:</dd>
-                    <dd>Wind:</dd>
-                      <dd>Humidity:</dd>
-                  </ul>
-                </p>
-              </div>
-            </div>
-            <!-- Third forecast box -->
-            <div class="col-md-2 card border-light" style="max-width: 18rem">
-              <div class="card-body">
-                <h5 class="card-title">Light card title</h5>
-                <p class="card-text">
-                  <ul id="cityfc ps-0">
-                    <dd>Temp:</dd>
-                    <dd>Wind:</dd>
-                    <dd>Humidity:</dd>
-                  </ul>
-                </p>
-              </div>
-            </div>
-            <!-- Fourth forecast box -->
-            <div class="col-md-2 card border-light" style="max-width: 18rem">
-              <div class="card-body">
-                <h5 class="card-title">Light card title</h5>
-                <p class="card-text">
-                  <ul id="cityfc ps-0">
-                    <dd>Temp:</dd>
-                    <dd>Wind:</dd>
-                    <dd>Humidity:</dd>
-                  </ul>
-                </p>
-              </div>
-            </div>
-            <!-- Fifth forecast box -->
-            <div class="col-md-2 card border-light" style="max-width: 18rem">
-              <div class="card-body">
-                <h5 class="card-title align-content-end">Light card title</h5>
-                <p class="card-text">
-                  <ul id="cityfc ps-0">
-                    <dd>Temp:</dd>
-                    <dd>Wind:</dd>
-                    <dd>Humidity:</dd>
-                  </ul>
-                </p>
-              </div>
-            </div>
             <!-- End of the body -->
           </div>
         </div>
