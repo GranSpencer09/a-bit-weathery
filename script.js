@@ -107,7 +107,7 @@ function part4(lat, lng) {
     beforeSend: function (request) {
       request.setRequestHeader(
         "x-access-token",
-        "988c321c1ddde559e602bae0133f5498"
+        "253f22589076a7a79595bb29b6511749"
       );
     },
     url: "https://api.openuv.io/api/v1/uv?lat=" + lat + "&lng=" + lng,
@@ -121,7 +121,9 @@ function part4(lat, lng) {
         currentUV.className = "bg-danger text-white";
       }
     },
-    error: function (response) {},
+    error: function (response) {
+      console.log(response);
+    },
   });
 }
 
