@@ -1,4 +1,6 @@
 const searchForm = document.getElementById("search-form");
+let cityArray = JSON.parse(localStorage.getItem("cityArray")) || [];
+renderSearchHistory();
 
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -21,9 +23,16 @@ function getCoords(cityEntered) {
     lat = value[0].lat;
     lng = value[0].lon;
     cityCurrent.textContent = value[0].name;
+    if (!cityArray.includes(value[0].name)) {
+      cityArray.push(value[0].name);
+    }
+
+    localStorage.setItem("cityArray", JSON.stringify(cityArray));
+    renderSearchHistory();
 
     part2(lat, lng);
     part3(lat, lng);
+    part4(lat, lng);
   });
 }
 function part2(lat, lng) {
@@ -78,6 +87,42 @@ function part3() {
     currentWind.textContent = value.list[0].wind.speed;
     currentHum.textContent = value.list[0].main.humidity;
 
-    part4();
+    // part4();
+  });
+}
+
+function part4(lat, lng) {
+  $.ajax({
+    type: "GET",
+    dataType: "json",
+    beforeSend: function (request) {
+      request.setRequestHeader(
+        "x-access-token",
+        "988c321c1ddde559e602bae0133f5498"
+      );
+    },
+    url: "https://api.openuv.io/api/v1/uv?lat=" + lat + "&lng=" + lng,
+    success: function (response) {
+      console.log(response);
+      currentUV.textContent = response.result.uv;
+    },
+    error: function (response) {
+      // handle error response
+    },
+  });
+}
+
+function renderSearchHistory() {
+  cityButtons.innerHTML = "";
+  cityArray.forEach((city) => {
+    var btn = document.createElement("button");
+    btn.classList.add("btn", "btn-secondary", "mt-md-2");
+
+    btn.textContent = city;
+
+    btn.addEventListener("click", function () {
+      getCoords(city);
+    });
+    cityButtons.append(btn);
   });
 }
