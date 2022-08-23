@@ -17,7 +17,8 @@ This website helps anyone who's wondering what the weather will be like in any c
 
 ## Usage
 
-`md ![What's displayed after a user enters a city](./screen-shot) `
+<img width="1424" alt="Screen Shot 2022-08-20 at 12 53 31 PM" src="https://user-images.githubusercontent.com/28960328/185764302-b9768ef8-f44a-4554-a6c2-ee79d7d3f5c4.png">
+
 To use this, open the app and enter in a city under in the search bar and click 'search'. The user will immediately see the results. The current weather and the name of the city searched for appear at the top of the screen. Beneath this is the 5 day forecast for the city the user searched for. Finally, after the user searches for a city, a button with the name of that city appears beneath the search bar. If the user wants to check the weather in a city they've already searched for, they can click the button that's appeared to do so.
 
 ## Credits

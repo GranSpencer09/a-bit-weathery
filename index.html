@@ -31,7 +31,7 @@
       <div class="row">
         <div class="col-lg-2 text-center">
           <!-- Search text box and button -->
-          <div class="row">
+          <div class="col-lg-12">
             <h2>Search for a City:</h2>
             <form id="search-form">
               <div class="ui-widget" id="search">
@@ -46,17 +46,18 @@
               class="border rounded border-primary border-3 opacity-50 mt-4"
             />
             <!-- City options buttons -->
-            <div id="cityButtons" class="height: 200px"></div>
+            <div id="cityButtons" class="d-grid gap-3"></div>
           </div>
         </div>
         <!-- Current city overview -->
         <div class="col ms-3">
-          <div class="border border-3 col-md-12">
-            <h2 id="cityCurrent"></h2>
-            <h2 id="currentDateSymbol"></h2>
+          <div class="col justify-content-between">
+            <h3 id="cityCurrent"></h3>
+            <h4 id="currentDate"></h3>
+            <h4 id="currentIcon"></h3>
           </div>
           <!-- Current data -->
-          <ul class="border border-3" id="currentTWHUV">
+          <ul id="currentTWHUV">
             <dd>Temp: <span id="currentTemp"></span>°</dd>
             <dd>Wind: <span id="currentWind"></span> mph</dd>
             <dd>Humidity: <span id="currentHum"></span> %</dd>
@@ -77,6 +78,11 @@
       integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
       crossorigin="anonymous"
     ></script>
+    <!-- CDN example (jsDelivr) -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script>
+      dayjs().format();
+    </script>
     <script src="./script.js"></script>
   </body>
 </html>

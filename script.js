@@ -1,12 +1,15 @@
+const currentIcon = document.getElementById("currentIcon");
+const cityCurrent = document.getElementById("cityCurrent");
 const searchForm = document.getElementById("search-form");
+const userInput = document.getElementById("tags-search");
 let cityArray = JSON.parse(localStorage.getItem("cityArray")) || [];
 renderSearchHistory();
 
 searchForm.addEventListener("submit", (e) => {
   e.preventDefault();
   // console.log("hi");
-  const userInput = document.getElementById("tags-search").value;
-  getCoords(userInput.trim());
+  //const userInput = document.getElementById("tags-search").value;
+  getCoords(userInput.value.trim());
 });
 
 function getCoords(cityEntered) {
@@ -22,7 +25,13 @@ function getCoords(cityEntered) {
     console.log(value);
     lat = value[0].lat;
     lng = value[0].lon;
-    cityCurrent.textContent = value[0].name;
+
+    cityCurrent.textContent = `${value[0].name} `;
+
+    userInput.value.textContent = "";
+
+    currentDate.textContent = dayjs().format("MM/DD/YYYY");
+
     if (!cityArray.includes(value[0].name)) {
       cityArray.push(value[0].name);
     }
@@ -45,7 +54,8 @@ function part2(lat, lng) {
     method: "GET",
   }).then((value) => {
     console.log(value);
-    // part3();
+    console.log(value.weather[0].icon);
+    currentIcon.innerHTML = `<img src="http://openweathermap.org/img/wn/${value.weather[0].icon}@2x.png"/>`;
   });
 }
 
@@ -67,9 +77,13 @@ function part3() {
       divCard.classList.add("col-md-2", "card", "border-light");
       divCard.style.maxWidth = "18rem";
       divCard.innerHTML = `<div class="card-body">
-                <h5 class="card-title">${value.list[i].dt_txt}</h5>
+                <h5 class="card-title">${dayjs(value.list[i].dt_txt).format(
+                  "DD/MM/YYYY"
+                )}</h5>
                 <p class="card-text">
-                <img src="http://openweathermap.org/img/wn/${value.list[i].weather[0].icon}@2x.png"/>
+                <img src="http://openweathermap.org/img/wn/${
+                  value.list[i].weather[0].icon
+                }@2x.png"/>
                   <ul>
                     <dd>Temp: ${value.list[i].main.temp}°</dd>
                     <dd>Wind: ${value.list[i].wind.speed}mph</dd>
@@ -79,15 +93,10 @@ function part3() {
               </div>`;
       city5Fc.append(divCard);
     }
-    //console.log(value);
-
-    //cityCurrentDateSymbol.textContent = date();
 
     currentTemp.textContent = value.list[0].main.temp;
     currentWind.textContent = value.list[0].wind.speed;
     currentHum.textContent = value.list[0].main.humidity;
-
-    // part4();
   });
 }
 
@@ -103,12 +112,16 @@ function part4(lat, lng) {
     },
     url: "https://api.openuv.io/api/v1/uv?lat=" + lat + "&lng=" + lng,
     success: function (response) {
-      console.log(response);
       currentUV.textContent = response.result.uv;
+      if (response.result.uv <= 5) {
+        currentUV.className = "bg-success text-white";
+      } else if (response.result.uv > 5 && response.result.uv <= 7) {
+        currentUV.className = "bg-warning text-white";
+      } else if (response.result.uv > 7) {
+        currentUV.className = "bg-danger text-white";
+      }
     },
-    error: function (response) {
-      // handle error response
-    },
+    error: function (response) {},
   });
 }
 
