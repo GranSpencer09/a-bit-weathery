@@ -76,9 +76,9 @@ function part3() {
       var divCard = document.createElement("div");
       divCard.classList.add("col-md-2", "card", "border-light");
       divCard.style.maxWidth = "18rem";
-      divCard.innerHTML = `<div class="card-body">
+      divCard.innerHTML = `<div class="card-body border-light">
                 <h5 class="card-title">${dayjs(value.list[i].dt_txt).format(
-                  "DD/MM/YYYY"
+                  "MM/DD/YYYY"
                 )}</h5>
                 <p class="card-text">
                 <img src="http://openweathermap.org/img/wn/${
